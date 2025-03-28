@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul des Moyennes - Élève</title>
+    <link rel="stylesheet" href="eleve.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Réinitialisation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bouton Menu (Hamburger) en haut à droite */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Menu Slide */
+        .menus {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Caché par défaut */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            padding-top: 60px;
+        }
+
+        /* Menu visible */
+        .menus.active {
+            left: 0;
+        }
+
+        .menus ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menus li {
+            border-bottom: 1px solid #555;
+        }
+
+        .menus a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .menus a:hover {
+            background-color: #666;
+        }
+
+        /* Sous-menus */
+        .submenu {
+            display: none;
+            background-color: #555;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+      <!-- Bouton Menu -->
+      <div class="menu-toggle" id="menu-toggle">
+    
+        ☰
+</div>
+
+<!-- Menu caché sur le côté droit -->
+<nav class="menus" id="menus">
+    <ul>
+        <li><a href="index.html">Accueil</a></li> <br>
+
+        <li class="dropdown">
+            <a href="eleve.html">Élèves </a> <br>
+           
+        </li>
+
+        <li class="dropdown">
+            <a href="professeur.html">Professeur </a> <br>
+            
+        </li>
+
+        <li class="dropdown">
+            <a href="directeur.html">Directeur </a> <br>
+        </li>
+
+        <li><a href="politique.html">Politique de confidentialité</a></li> <br>
+        <li><a href="mentions.html">Mention légale</a></li> <br>
+        <li><a href="contact.html">Nous contacter</a></li> <br>
+        <li><a href="contact.html">Suport tchecnique</a></li> <br>
+        <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        const menus = document.getElementById("menus");
+
+        menuToggle.addEventListener("click", function() {
+            menus.classList.toggle("active");
+        });
+    });
+</script>
+
+    <header class="header">
+        
+        <div class="header-content">
+            <h1 class="site-title">SchoolMetrics</h1>
+            <p class="site-description">Votre outil intelligent pour le calcul et la gestion des moyennes scolaires</p>
+        </div>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-target="matiere">Matière</button>
+            <button class="tab-btn" data-target="semestre">Semestre</button>
+            <button class="tab-btn" data-target="annuel">Annuel</button>
+            <a href="dic.html"><button class="tab-btn" data-target="Dictionnaire">Dictionnaire</button> </a>
+        </nav>
+
+    </header>
+
+    <main class="main">
+        <!-- Calcul par Matière -->
+        <section id="matiere" class="tab-content active">
+            <div class="card">
+                <h2><i class="fas fa-book"></i> Moyenne par Matière</h2>
+                <div class="form-group">
+                    <label>Nom de la matière :</label>
+                    <input type="text" id="nomMatiere">
+                </div>
+                
+                <div class="notes-config">
+                    <div class="input-group">
+                        <label>Nombre d'interros :</label>
+                        <input type="number" id="nbInterros" min="1" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label>Nombre de devoirs :</label>
+                        <input type="number" id="nbDevoirs" min="1" value="3">
+                    </div>
+                    <button class="btn" onclick="GradeManager.generateSubjectInputs()">
+                        <i class="fas fa-table"></i> Générer les champs
+                    </button>
+                </div>
+
+                <div class="grades-container">
+                    <div class="grade-section">
+                        <h3>Interrogations (40%)</h3>
+                        <div id="interrosInputs" class="grades-grid"></div>
+                    </div>
+                    <div class="grade-section">
+                        <h3>Devoirs (60%)</h3>
+                        <div id="devoirsInputs" class="grades-grid"></div>
+                    </div>
+                </div>
+
+                <button class="btn calculate-btn" onclick="GradeManager.calculateMatiere()">
+                    <i class="fas fa-calculator"></i> Calculer
+                </button>
+
+                <div class="results" id="matiereResult"></div>
+            </div>
+        </section>
+
+        <!-- Calcul par Semestre -->
+        <section id="semestre" class="tab-content">
+            <div class="card">
+                <h2><i class="fas fa-calendar-alt"></i> Moyenne Semestrielle</h2>
+                <div class="config-panel">
+                    <div class="input-group">
+                        <label>Nombre de matières :</label>
+                        <input type="number" id="nbMatieres" min="1" value="5">
+                    </div>
+                    <div class="input-group">
+                        <label>Nombre d'interros/matière :</label>
+                        <input type="number" id="nbInterrosSemestre" min="1" value="2">
+                    </div>
+                    <div class="input-group">
+                        <label>Nombre de devoirs/matière :</label>
+                        <input type="number" id="nbDevoirsSemestre" min="1" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label>Seuil de validation :</label>
+                        <input type="number" id="seuil" min="0" max="20" step="0.5" value="10">
+                    </div>
+                    <button class="btn" onclick="GradeManager.generateSemesterTable()">
+                        <i class="fas fa-magic"></i> Générer le tableau
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="semester-table" id="semesterTable">
+                        <thead id="semesterHeader"></thead>
+                        <tbody id="semesterBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="global-results">
+                    <div class="result-item">
+                        <span>Moyenne Générale :</span>
+                        <span id="moyenneSemestre">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Coefficient Total :</span>
+                        <span id="coeffTotal">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span>Matières Validées :</span>
+                        <span id="matieresValidees">-</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calcul Annuel -->
+        <section id="annuel" class="tab-content">
+            <div class="card">
+                <h2><i class="fas fa-chart-line"></i> Moyenne Annuelle</h2>
+                <div class="input-group">
+                    <label>Nombre de semestres :</label>
+                    <input type="number" id="nbSemestres" min="1" value="2">
+                    <button class="btn" onclick="GradeManager.generateAnnualInputs()">
+                        <i class="fas fa-plus"></i> Générer
+                    </button>
+                </div>
+                <div id="semestresInputs" class="annual-inputs"></div>
+                <button class="btn calculate-btn" onclick="GradeManager.calculateAnnual()">
+                    <i class="fas fa-calculator"></i> Calculer
+                </button>
+                <div class="results" id="annuelResult"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="eleve.js"></script>
+</body>
+</html>

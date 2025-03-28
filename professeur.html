@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Professeur - SchoolCalculator</title>
+    <link rel="stylesheet" href="professeur.css">
+    <style>
+        /* Réinitialisation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bouton Menu (Hamburger) en haut à droite */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Menu Slide */
+        .menus {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Caché par défaut */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            padding-top: 60px;
+        }
+
+        /* Menu visible */
+        .menus.active {
+            left: 0;
+        }
+
+        .menus ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menus li {
+            border-bottom: 1px solid #555;
+        }
+
+        .menus a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .menus a:hover {
+            background-color: #666;
+        }
+
+        /* Sous-menus */
+        .submenu {
+            display: none;
+            background-color: #555;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+     <!-- Bouton Menu -->
+     <div class="menu-toggle" id="menu-toggle">
+    
+            ☰
+    </div>
+
+    <!-- Menu caché sur le côté droit -->
+    <nav class="menus" id="menus">
+        <ul>
+            <li><a href="index.html">Accueil</a></li> <br>
+
+            <li class="dropdown">
+                <a href="eleve.html">Élèves </a> <br>
+               
+            </li>
+
+            <li class="dropdown">
+                <a href="professeur.html">Professeur </a> <br>
+                
+            </li>
+
+            <li class="dropdown">
+                <a href="directeur.html">Directeur </a> <br>
+            </li>
+
+            <li><a href="politique.html">Politique de confidentialité</a></li> <br>
+            <li><a href="mentions.html">Mention légale</a></li> <br>
+            <li><a href="contact.html">Nous contacter</a></li> <br>
+            <li><a href="contact.html">Suport tchecnique</a></li> <br>
+            <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menus = document.getElementById("menus");
+
+            menuToggle.addEventListener("click", function() {
+                menus.classList.toggle("active");
+            });
+        });
+    </script>
+    
+
+    <div class="container">
+        <header class="header">
+             <h1> 📊 SchoolCalculator - Espace Professeur</h1>
+            <nav>
+                <button class="nav-btn active" data-section="classe">Moyenne Classe</button>
+                <button class="nav-btn" data-section="apprenant">Moyenne Apprenant</button>
+                <button class="nav-btn" data-section="reussite">Taux de Réussite</button>
+            </nav>
+        </header>
+
+
+        <!-- Section Moyenne Classe -->
+        <section id="classe" class="calculator-section active">
+            <h2>Calcul de moyenne pour une classe</h2>
+            
+            <div class="config-panel">
+                <div class="input-group">
+                    <label>Nombre d'élèves :</label>
+                    <input type="number" id="nbEleves" min="1" value="30">
+                </div>
+                <div class="input-group">
+                    <label>Nombre de matières :</label>
+                    <input type="number" id="nbMatieresClasse" min="1" value="5">
+                </div>
+                <button onclick="generateClassTable()" class="calc-btn">Générer le tableau</button>
+            </div>
+
+            <div id="classTableContainer" class="table-container"></div>
+            
+            <button onclick="calculateClassAverages()" class="calc-btn hidden" id="calcClassBtn">Calculer</button>
+            
+            <div id="classResults" class="results-box hidden">
+                <h3>Résultats pour la classe</h3>
+                <div class="results-grid">
+                    <div class="results-table">
+                        <h4>Moyennes par élève</h4>
+                        <table class="excel-table">
+                            <thead>
+                                <tr>
+                                    <th>Élève</th>
+                                    <th>Moyenne</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentAveragesBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="results-table">
+                        <h4>Moyennes par matière</h4>
+                        <table class="excel-table">
+                            <thead>
+                                <tr>
+                                    <th>Matière</th>
+                                    <th>Moyenne</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjectAveragesBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="final-result">
+                    Moyenne Générale de la Classe: <span id="classAverage">0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Moyenne Apprenant -->
+        <section id="apprenant" class="calculator-section hidden">
+            <h2>Calcul de moyenne pour un apprenant</h2>
+            
+            <div class="config-panel">
+                <div class="input-group">
+                    <label>Nombre de matières :</label>
+                    <input type="number" id="nbMatieresEleve" min="1" value="5">
+                </div>
+                <div class="input-group">
+                    <label>Nombre de notes par matière :</label>
+                    <input type="number" id="nbNotesMatiere" min="1" value="3">
+                </div>
+                <button onclick="generateStudentInputs()" class="calc-btn">Générer les champs</button>
+            </div>
+
+            <div id="studentInputs" class="table-container"></div>
+            
+            <button onclick="calculateStudentAverage()" class="calc-btn hidden" id="calcStudentBtn">Calculer</button>
+            
+            <div id="studentResults" class="results-box hidden">
+                <h3>Résultats pour l'apprenant</h3>
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Matière</th>
+                            <th>Notes</th>
+                            <th>Moyenne</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentResultsBody"></tbody>
+                </table>
+                <div class="final-result">
+                    Moyenne Générale: <span id="studentAverage">0.00</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Taux de Réussite -->
+        <section id="reussite" class="calculator-section hidden">
+            <h2>Calcul du taux de réussite</h2>
+            
+            <div class="config-panel">
+                <div class="input-group">
+                    <label>Nombre d'élèves :</label>
+                    <input type="number" id="nbElevesReussite" min="1" value="30">
+                </div>
+                <div class="input-group">
+                    <label>Note minimale de réussite :</label>
+                    <input type="number" id="noteMinReussite" min="0" max="20" value="10">
+                </div>
+                <button onclick="generateSuccessInputs()" class="calc-btn">Générer les champs</button>
+            </div>
+
+            <div id="successInputs" class="table-container"></div>
+            
+            <button onclick="calculateSuccessRate()" class="calc-btn hidden" id="calcSuccessBtn">Calculer</button>
+            
+            <div id="successResults" class="results-box hidden">
+                <h3>Statistiques de réussite</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="successRate">0%</div>
+                        <div class="stat-label">Taux de réussite</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="avgSuccess">0.00</div>
+                        <div class="stat-label">Moyenne générale</div>
+                    </div>
+                </div>
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th>Élève</th>
+                            <th>Moyenne</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody id="successDetails"></tbody>
+                </table>
+            </div>
+        </section>
+
+        
+    </div>
+
+
+    <script src="professeur.js"></script>
+</body>
+</html>

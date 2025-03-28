@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Direction - School Analytics</title>
+    <link rel="stylesheet" href="directeur.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Réinitialisation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bouton Menu (Hamburger) en haut à droite */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Menu Slide */
+        .menus {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Caché par défaut */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            padding-top: 60px;
+        }
+
+        /* Menu visible */
+        .menus.active {
+            left: 0;
+        }
+
+        .menus ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menus li {
+            border-bottom: 1px solid #555;
+        }
+
+        .menus a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .menus a:hover {
+            background-color: #666;
+        }
+
+        /* Sous-menus */
+        .submenu {
+            display: none;
+            background-color: #555;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+      
+     <!-- Bouton Menu -->
+     <div class="menu-toggle" id="menu-toggle">
+    
+        ☰
+</div>
+
+<!-- Menu caché sur le côté droit -->
+<nav class="menus" id="menus">
+    <ul>
+        <li><a href="index.html">Accueil</a></li> <br>
+
+        <li class="dropdown">
+            <a href="eleve.html">Élèves </a> <br>
+           
+        </li>
+
+        <li class="dropdown">
+            <a href="professeur.html">Professeur </a> <br>
+            
+        </li>
+
+        <li class="dropdown">
+            <a href="directeur.html">Directeur </a> <br>
+        </li>
+
+        <li><a href="politique.html">Politique de confidentialité</a></li> <br>
+        <li><a href="mentions.html">Mention légale</a></li> <br>
+        <li><a href="contact.html">Nous contacter</a></li> <br>
+        <li><a href="contact.html">Suport tchecnique</a></li> <br>
+        <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        const menus = document.getElementById("menus");
+
+        menuToggle.addEventListener("click", function() {
+            menus.classList.toggle("active");
+        });
+    });
+</script>
+
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-chart-line"></i> Tableau de Bord Direction</h1>
+            <div class="header-controls">
+                <select id="anneeScolaire" class="styled-select">
+                    <option value="2023-2024">2023-2024</option>
+                    <option value="2022-2023">2022-2023</option>
+                </select>
+                <button class="btn-export"><i class="fas fa-file-export"></i> Exporter PDF</button>
+            </div>
+        </header>
+
+        <div class="dashboard">
+            <!-- Section Saisie des Données -->
+            <div class="data-input-section">
+                <h2><i class="fas fa-edit"></i> Saisie des Données</h2>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label>Nombre de classes :</label>
+                        <input type="number" id="nbClasses" min="1" value="3">
+                    </div>
+                    <div class="input-group">
+                        <label>Nombre de matières :</label>
+                        <input type="number" id="nbMatieres" min="1" value="5">
+                    </div>
+                    <button onclick="generateInputTable()" class="btn-generate">
+                        <i class="fas fa-table"></i> Générer le Tableau
+                    </button>
+                </div>
+                
+                <div id="dataInputTable" class="table-container"></div>
+                
+                <button onclick="calculateResults()" class="btn-calculate hidden">
+                    <i class="fas fa-calculator"></i> Calculer les Résultats
+                </button>
+            </div>
+
+            <!-- Cartes Statistiques -->
+            <div class="stats-grid">
+                <div class="stat-card success">
+                    <div class="stat-content">
+                        <h3>Taux de Réussite</h3>
+                        <div class="value" id="tauxReussite">0%</div>
+                        <div class="evolution" id="evolutionReussite"></div>
+                    </div>
+                    <i class="stat-icon fas fa-chart-pie"></i>
+                </div>
+                
+                <div class="stat-card warning">
+                    <div class="stat-content">
+                        <h3>Moyenne Générale</h3>
+                        <div class="value" id="moyenneGenerale">0.00/20</div>
+                        <div class="evolution" id="evolutionMoyenne"></div>
+                    </div>
+                    <i class="stat-icon fas fa-balance-scale"></i>
+                </div>
+            </div>
+
+            <!-- Graphiques -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h2><i class="fas fa-chart-bar"></i> Performance par Classe</h2>
+                    <canvas id="classChart"></canvas>
+                </div>
+                
+                <div class="chart-container">
+                    <h2><i class="fas fa-chart-line"></i> Évolution Annuelle</h2>
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Tableau des Résultats -->
+            <div class="data-table">
+                <h2><i class="fas fa-table"></i> Détails par Matière</h2>
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Matière <i class="fas fa-sort"></i></th>
+                            <th>Moyenne <i class="fas fa-sort"></i></th>
+                            <th>Réussite <i class="fas fa-sort"></i></th>
+                            <th>Évolution <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="subjectData"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <button class="acceuil"> <a href="index.html"> <h2 class=""> Retour a l'acceuil ⇚⇚⇚ </h2> </a></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="directeur.js"></script>
+</body>
+</html>

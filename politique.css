@@ -1,0 +1,134 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --background: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--background);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.header {
+    text-align: center;
+    padding: 3rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+.policy-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--background);
+}
+
+.nav-item {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background: white;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.nav-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.policy-section {
+    padding: 2rem;
+}
+
+.card {
+    background: var(--background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.data-list li {
+    padding: 1rem;
+    background: white;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.security-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.security-card {
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.encryption { background: var(--success-color); }
+.audit { background: var(--secondary-color); }
+
+.usage-flow {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 2rem;
+}
+
+.flow-step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.policy-footer {
+    padding: 3rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 0 0 15px 15px;
+    margin-top: 2rem;
+}
+
+.contact-box {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-link {
+    color: white;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    margin-top: 1rem;
+}

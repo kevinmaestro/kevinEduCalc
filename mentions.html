@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - School Analytics</title>
+    <link rel="stylesheet" href="mentions.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Réinitialisation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bouton Menu (Hamburger) en haut à droite */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Menu Slide */
+        .menus {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Caché par défaut */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            padding-top: 60px;
+        }
+
+        /* Menu visible */
+        .menus.active {
+            left: 0;
+        }
+
+        .menus ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menus li {
+            border-bottom: 1px solid #555;
+        }
+
+        .menus a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .menus a:hover {
+            background-color: #666;
+        }
+
+        /* Sous-menus */
+        .submenu {
+            display: none;
+            background-color: #555;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+    
+     <!-- Bouton Menu -->
+     <div class="menu-toggle" id="menu-toggle">
+    
+        ☰
+</div>
+
+<!-- Menu caché sur le côté droit -->
+<nav class="menus" id="menus">
+    <ul>
+        <li><a href="index.html">Accueil</a></li> <br>
+
+        <li class="dropdown">
+            <a href="eleve.html">Élèves </a> <br>
+           
+        </li>
+
+        <li class="dropdown">
+            <a href="professeur.html">Professeur </a> <br>
+            
+        </li>
+
+        <li class="dropdown">
+            <a href="directeur.html">Directeur </a> <br>
+        </li>
+
+        <li><a href="politique.html">Politique de confidentialité</a></li> <br>
+        <li><a href="mentions.html">Mention légale</a></li> <br>
+        <li><a href="contact.html">Nous contacter</a></li> <br>
+        <li><a href="contact.html">Suport tchecnique</a></li> <br>
+        <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        const menus = document.getElementById("menus");
+
+        menuToggle.addEventListener("click", function() {
+            menus.classList.toggle("active");
+        });
+    });
+</script>
+
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-balance-scale"></i> Mentions Légales</h1>
+            <p>En vigueur au 01/09/2023</p>
+        </header>
+
+        <main class="legal-content">
+            <!-- Éditeur -->
+            <section class="legal-section">
+                <div class="legal-card">
+                    <h2><i class="fas fa-building"></i> Éditeur du Site</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-user-tie"></i>
+                            <div>
+                                <h3>Raison Sociale</h3>
+                                <p>EDUC TECH SARL</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Adresse</h3>
+                                <p>123 Rue de l'Éducation<br>75015 COTONOU</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-address-card"></i>
+                            <div>
+                                <h3>SIRET</h3>
+                                <p>123 456 789 00015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hébergement -->
+            <section class="legal-section">
+                <div class="legal-card">
+                    <h2><i class="fas fa-server"></i> Hébergement</h2>
+                    <div class="hosting-details">
+                        <div class="hosting-provider">
+                            <img src="aws-logo.svg" alt="AWS" class="hosting-logo">
+                            <div>
+                                <h3>Gighub Services</h3>
+                                <p>38 Avenue John F. Kennedy<br>L-1855 Luxembourg</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Propriété intellectuelle -->
+            <section class="legal-section">
+                <div class="legal-card">
+                    <h2><i class="fas fa-copyright"></i> Propriété Intellectuelle</h2>
+                    <div class="copyright-content">
+                        <p>Tous les éléments du site sont protégés par :</p>
+                        <ul class="protection-list">
+                            <li><i class="fas fa-lock"></i> Droits d'auteur</li>
+                            <li><i class="fas fa-trademark"></i> Marques déposées</li>
+                            <li><i class="fas fa-file-contract"></i> Licence MIT</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="legal-footer">
+            <div class="compliance-box">
+                <h3><i class="fas fa-shield-alt"></i> Conformité</h3>
+                <div class="compliance-badges">
+                    <img src="rgpd-badge.png" alt="RGPD" class="compliance-badge">
+                    <img src="wcag-badge.png" alt="WCAG 2.1" class="compliance-badge">
+                </div>
+            </div>
+            <div class="links">
+                <a href="politique.html" class="legal-link">Politique de Confidentialité</a>
+                <span>|</span>
+                <a href="cgu.html" class="legal-link">CGU</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="mentions.js"></script>
+</body>
+</html>

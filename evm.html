@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionnaire Éducatif</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="evm.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="OIP.jfif" alt="Logo">
+    </div>
+    <h1>Espace Élève</h1>
+  </header>
+
+  <main>
+    <!-- Section Authentification -->
+    <section class="auth-section" id="authSection">
+      <div class="auth-container">
+        <div class="auth-tabs">
+          <button class="tab-btn active" id="loginTab">Connexion</button>
+          <button class="tab-btn" id="signupTab">Créer compte</button>
+        </div>
+
+        <!-- Formulaire de connexion -->
+        <div class="auth-form active" id="loginForm">
+          <h2>Connexion</h2>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginNom">Nom :</label>
+              <input type="text" id="loginNom" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPrenom">Prénom :</label>
+              <input type="text" id="loginPrenom" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Mot de passe :</label>
+              <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit" class="submit-btn">Se connecter</button>
+          </form>
+        </div>
+
+        <!-- Formulaire de création -->
+        <div class="auth-form" id="signupForm">
+          <h2>Création de compte</h2>
+          <form id="studentInfoForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" required>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="classe">Classe :</label>
+                <input type="text" id="classe" required>
+              </div>
+              <div class="form-group">
+                <label for="age">Âge :</label>
+                <input type="number" id="age" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ecole">École :</label>
+              <input type="text" id="ecole" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nbMatieres"> Nombre de Matières :</label>
+                <input type="number" id="nbMatieres" required>
+              </div>
+              <div class="form-group">
+                <label for="nbInterros"> Nombre de Interros :</label>
+                <input type="number" id="nbInterros" required>
+              </div>
+              <div class="form-group">
+                <label for="nbDevoirs"> Nombre de Devoirs :</label>
+                <input type="number" id="nbDevoirs" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe :</label>
+              <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Créer mon compte</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Élève -->
+    <section class="dashboard" id="dashboard" style="display:none;">
+      <div class="user-header">
+        <div class="user-info">
+          <h2 id="userName"></h2>
+          <p id="userDetails"></p>
+        </div>
+        <button id="logoutBtn" class="action-btn">Déconnexion</button>
+      </div>
+
+      <div class="grade-container">
+        <div class="grade-actions">
+          <button id="showSheetBtn" class="action-btn">Afficher la feuille</button>
+          <button id="calcBtn" class="action-btn">Calculer</button>
+          <button id="downloadBtn" class="action-btn">Exporter</button>
+        </div>
+        
+        <div class="grade-sheet" id="gradeSheetContainer"></div>
+        <div class="grade-results" id="calculatedSheetContainer"></div>
+        <div id="generalAverage" class="general-average"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Dictionnaire Éducatif</p>
+  </footer>
+
+  <script src="evm.js"></script>
+</body>
+</html>

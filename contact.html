@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactez-nous - School Analytics</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Réinitialisation */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Bouton Menu (Hamburger) en haut à droite */
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Menu Slide */
+        .menus {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Caché par défaut */
+            width: 250px;
+            height: 100%;
+            background-color: #444;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease-in-out;
+            padding-top: 60px;
+        }
+
+        /* Menu visible */
+        .menus.active {
+            left: 0;
+        }
+
+        .menus ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menus li {
+            border-bottom: 1px solid #555;
+        }
+
+        .menus a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .menus a:hover {
+            background-color: #666;
+        }
+
+        /* Sous-menus */
+        .submenu {
+            display: none;
+            background-color: #555;
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+      <!-- Bouton Menu -->
+      <div class="menu-toggle" id="menu-toggle">
+    
+        ☰
+</div>
+
+<!-- Menu caché sur le côté droit -->
+<nav class="menus" id="menus">
+    <ul>
+        <li><a href="index.html">Accueil</a></li> <br>
+
+        <li class="dropdown">
+            <a href="eleve.html">Élèves </a> <br>
+           
+        </li>
+
+        <li class="dropdown">
+            <a href="professeur.html">Professeur </a> <br>
+            
+        </li>
+
+        <li class="dropdown">
+            <a href="directeur.html">Directeur </a> <br>
+        </li>
+
+        <li><a href="politique.html">Politique de confidentialité</a></li> <br>
+        <li><a href="mentions.html">Mention légale</a></li> <br>
+        <li><a href="contact.html">Nous contacter</a></li> <br>
+        <li><a href="contact.html">Suport tchecnique</a></li> <br>
+        <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+    </ul>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        const menus = document.getElementById("menus");
+
+        menuToggle.addEventListener("click", function() {
+            menus.classList.toggle("active");
+        });
+    });
+</script>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1><i class="fas fa-headset"></i> Contactez notre équipe</h1>
+            <p>Nous sommes là pour répondre à vos questions</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Section Informations -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Téléphone</h3>
+                    <p>+229 46 07 75 12</p>
+                    <p>Support disponible 24/7</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>pedrodovonon@gmail.com</p>
+                    <p>Réponse sous 24h</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Adresse</h3>
+                    <p>123 Rue de l'Éducation</p>
+                    <p>75015 COTONOU, Bénin</p>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100085594103337"><i class="fab fa-facebook"></i></a>
+                    <a href="
+                    https://wa.me/+22946077512
+                    "><i class="fab fa-twitter"></i></a>
+                    <a href="
+                    https://www.instagram.com/kevin_dovonon"><i class="fab fa-linkedin"></i></a>
+                    <a href="
+                    https://www.instagram.com/kevin_dovonon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Formulaire de Contact -->
+            <div class="contact-form">
+                <h2><i class="fas fa-paper-plane"></i> Envoyez-nous un message</h2>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <select id="subject" required>
+                            <option value="">Choisir un sujet</option>
+                            <option>Support Technique</option>
+                            <option>Demande d'information</option>
+                            <option>Partenariat</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="file-upload">
+                            <input type="file" id="attachment">
+                            <span><i class="fas fa-paperclip"></i> Joindre un fichier</span>
+                        </label>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Carte Google Maps -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.292292615509614!3d48.85837007928746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1642009399993!5m2!1sfr!2sfr" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+</html>

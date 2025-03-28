@@ -1,0 +1,170 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f1c40f;
+    --background: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 12000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.header {
+    padding: 2rem;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px 15px 0 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card.success { background: var(--success-color); }
+.stat-card.warning { background: var(--warning-color); }
+
+.stat-icon {
+    font-size: 4rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 20px;
+    bottom: -10px;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.chart-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.analytics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+.analytics-table th,
+.analytics-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.analytics-table th {
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.data-input-section {
+    padding: 2rem;
+    background: white;
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.btn-generate, .btn-calculate {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    align-self: flex-end;
+}
+
+.btn-generate:hover, .btn-calculate:hover {
+    background: #2980b9;
+}
+
+.hidden {
+    display: none;
+}
+
+.table-container {
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.data-table {
+    margin: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.positive { color: var(--success-color); }
+.negative { color: var(--warning-color); }
+
+.acceuil {
+    text-align: center;
+    background-color: rgb(98, 223, 98);
+    color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 42em;
+    text-decoration: none;
+    transform-style: initial;
+}
+
+.acceuil a {
+    text-decoration: none;
+    color: white;
+}

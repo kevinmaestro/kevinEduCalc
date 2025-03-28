@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCalc - Plateforme de Calcul Scolaire</title>
+    <link rel="stylesheet" href="in.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <h1>Edu<span>Calc</span></h1>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="eleve.html">Élève</a></li>
+                <li><a href="professeur.html">Professeur</a></li>
+                <li><a href="directeur.html">Directeur</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dic.html">Dictionnaire</a></li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Bienvenue sur EduCalc</h2>
+                <h1>Gestion Intelligente des Résultats Scolaires</h1>
+                <p>Solution complète pour le calcul et l'analyse des performances académiques</p>
+                <button class="cta-btn" onclick="location.href='#profiles'">Commencer</button>
+            </div>
+            <div class="hero-image">
+                <img src="angular-universal.svg" alt="Analyse de données" width="500px">
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Section -->
+    <section class="profiles" id="profiles">
+        <div class="section-header">
+            <h2>Choisissez Votre Profil</h2>
+            <p>Sélectionnez votre rôle pour accéder aux outils adaptés</p>
+        </div>
+        
+        <div class="profile-grid">
+            <div class="profile-card student" onclick="location.href='eleve.html'">
+                <div class="card-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Élève</h3>
+                <ul class="card-features">
+                    <li>Calcul de moyenne par matière</li>
+                    <li>Suivi semestriel</li>
+                    <li>Statistiques personnelles</li>
+                </ul>
+                <div class="card-footer">
+                    <span>Accéder <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <div class="profile-card teacher" onclick="location.href='professeur.html'">
+                <div class="card-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Professeur</h3>
+                <ul class="card-features">
+                    <li>Gestion de classe</li>
+                    <li>Analyse de performance</li>
+                    <li>Rapports détaillés</li>
+                </ul>
+                <div class="card-footer">
+                    <span>Accéder <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <div class="profile-card director" onclick="location.href='directeur.html'">
+                <div class="card-icon">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h3>Directeur</h3>
+                <ul class="card-features">
+                    <li>Tableau de bord global</li>
+                    <li>Statistiques établissement</li>
+                    <li>Analyses annuelles</li>
+                </ul>
+                <div class="card-footer">
+                    <span>Accéder <i class="fas fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Fonctionnalités Clés</h2>
+            <p>Découvrez ce qui fait notre force</p>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-calculator"></i>
+                <h3>Calculs Prédictifs</h3>
+                <p>Algorithmes avancés pour des résultats précis</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analyses Dynamiques</h3>
+                <p>Visualisations de données en temps réel</p>
+            </div>
+            
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Sécurité Maximale</h3>
+                <p>Protection des données cryptées</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>À Propos</h3>
+                <p>Plateforme développée par des professionnels de l'éducation</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Liens Utiles</h3>
+                <ul>
+                    <li><a href="mentions.html">Mentions légales</a></li>
+                    <li><a href="politique.html">Politique de confidentialité</a></li>
+                    <li><a href="contact.html">Support technique</a></li>
+                    <li><a href="Bibliographie.html">Bibliographie du concepteur</a></li>
+                    <li><a href="dic.html">Dictionnaire</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EduCalc. Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
